@@ -6,3 +6,12 @@ I'm going to put this on the wisconsin npm module name and see if people get mad
 
 
 There might be a better way to look up companies by their id number.  If there is, I haven't thought of it.  I got as far as the addresses because it sounded like people were really interested in those.  Go ahead and add code to scrape the officers or the reports.  I haven't found a entry that lists the officers yet.
+
+```javascript
+
+var dfi = require('wisconsin/apps.dfi.wi.gov');
+
+dfi.entities('cheese').then((theCheesiest) => { console.log(theCheesiest); })
+
+
+```

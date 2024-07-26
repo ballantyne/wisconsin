@@ -27,7 +27,7 @@ const paths = {
 
 
 
-function search(query, config) {
+function search(query, config={}) {
   return new Promise(async(resolve, reject) => {
     if (typeof query == 'string') {
       query = constructQuery('default', {q: query})
@@ -67,7 +67,7 @@ module.exports.search = search;
 
 
 
-function entities(query, config) {
+function entities(query, config={}) {
   if (typeof query == 'string') {
     query = constructQuery('default', 'entities', {q: query})
   }
@@ -81,7 +81,7 @@ module.exports.entities = entities;
 
 
 
-function agents(query, config) {
+function agents(query, config={}) {
   if (typeof query == 'string') {
     query = constructQuery('default', 'agents', {q: query})
   }
@@ -98,7 +98,7 @@ module.exports.agents = agents;
 
 
 
-function find(query, config) {
+function find(query, config={}) {
   if (typeof query == 'string') {
     query = constructQuery('default', 'entities', {q: query})
   }
