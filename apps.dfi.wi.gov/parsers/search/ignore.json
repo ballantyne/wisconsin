@@ -1,0 +1,15 @@
+[
+  {"type": "exact", "value": "</td>"},
+  {"type": "contains", "value": "statusDescriptionAndStatusDate"},
+  {"type": "exact", "value": "</tr>"},
+  {"type": "exact", "value": "valign=\"top\">"},
+
+  {"type": "exact", "value": "</span>"},
+  {"type": "exact", "value": "<br>"},
+  {"type": "exact", "value": "<br />"},
+  {"type": "exact", "value":  "-"}, 
+  {"type": "exact", "value": "</a>"},
+  {"type": "exact", "value": "</a></span>"},
+  {"type": "contains", "value": "typeDescription"}, 
+  {"type": "exact", "value": ""}
+]

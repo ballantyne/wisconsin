@@ -1,0 +1,8 @@
+[
+  {"type": "exact", "value": "<span id=\"ctl00_cpContent_lblPrincipalOfficeCountry\"></span>"},
+  {"type": "exact", "value": ""},
+  {"type": "startsWith", "value": "<!-- rrrrrrrrrrrrrrrrrrrrrrrrr"},
+  {"type": "startsWith", "value": "<!-- ####################"},
+  {"type": "exact", "value": "</div>"},
+  {"type": "exact", "value": "<br />"}
+]

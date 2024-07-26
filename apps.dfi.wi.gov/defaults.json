@@ -1,0 +1,21 @@
+{
+  "default": { 
+    "hostname": "apps.dfi.wi.gov",
+    "headers": {
+      "User-Agent": "[npm|github]:ballantyne/wisconsin/apps.dfi.wi.gov",
+      "Host":    "apps.dfi.wi.gov",
+      "Origin":  "https://apps.dfi.wi.gov"
+    }
+  },
+  "post": {
+    "method": "POST"
+  },
+  "search": {
+    "headers": {
+      "Referer": "https://apps.dfi.wi.gov/apps/CorpSearch/Advanced.aspx"
+    }
+  },
+  "get": {
+    "method": "GET"
+  }
+}

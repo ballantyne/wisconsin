@@ -1,0 +1,223 @@
+[
+  {
+    "name": "record:collect",
+    "states": ["scan"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<div id=\"entityDetails\">"
+    },
+    "sets": {
+      "state": "collect"
+    }
+  },
+  {
+    "name": "name:collect",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<h1 id=\"entityName\">"
+    },
+    "sets": {
+      "state": "name:collect"
+    }
+  },
+  {
+    "name": "name:gather",
+    "states": ["name:collect"],
+    "trigger": {
+      "type": "noTag"
+    },
+    "action": "gather_name",
+    "sets": {
+      "state": "collect"
+    }
+  },
+  {
+    "name": "key:collect",
+    "states": ["collect", "addresses"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<td class=\"label\">"
+    },
+    "sets": {
+      "state": "key:collect"
+    }
+  },
+  {
+    "name": "key:collection",
+    "states": ["key:collect", "address:key:collect"],
+    "trigger": {
+      "type": "contains",
+      "value": "<br />"
+    },
+    "action": "gather_key"
+  },
+  {
+    "name": "officers:collect",
+    "states": ["officers", "collect", "annual_report"],
+    "trigger": {
+      "type": "contains",
+      "value": "Officers/Directors"
+    },
+    "sets": {
+      "state": "officers"
+    }
+  },
+  {
+    "name": "old_names:collect",
+    "states": ["officers", "collect", "annual_report"],
+    "trigger": {
+      "type": "contains",
+      "value": "Old Names"
+    },
+    "sets": {
+      "state": "old_names"
+    }
+  },
+  {
+    "name": "chronology:collect",
+    "states": ["officers", "old_names", "collect", "annual_report"],
+    "trigger": {
+      "type": "contains",
+      "value": "Chronology"
+    },
+    "sets": {
+      "state": "chronology"
+    }
+  },
+  {
+    "name": "annual_report:collect",
+    "states": ["historical"],
+    "trigger": {
+      "type": "contains",
+      "value": "Annual Reports"
+    },
+    "sets": {
+      "state": "annual_report"
+    }
+  },
+
+  {
+    "name": "key:gather",
+    "states": ["key:collect"],
+    "trigger": {
+      "type": "noTag"
+    },
+    "action": "gather_key",
+    "sets": {
+      "state": "collect"
+    }
+  },
+  {
+    "name": "data:collect",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<td class=\"data\">"
+    },
+    "sets": {
+      "state": "data:collect"
+    }
+  },
+  {
+    "name": "principal_office:country:gather",
+    "states": ["data:collect"],
+    "trigger": {
+      "type": "contains",
+      "value": "PrincipalOfficeCountry"
+    },
+    "action": "gather_regex_data",
+    "regex": "<span id=\"\\w+\">(?<value>.+)<\/span>",
+    "sets": {
+      "state": "addresses"
+    }
+  },
+
+  {
+    "name": "effective_date:gather",
+    "states": ["data:collect"],
+    "trigger": {
+      "type": "contains",
+      "value": "RegisteredEffectiveDate"
+    },
+    "action": "gather_regex_data",
+    "regex": "<span id=\"\\w+\">(?<value>.+)<\/span>",
+    "sets": {
+      "state": "collect"
+    }
+  },
+  {
+    "name": "data:gather",
+    "states": ["data:collect"],
+    "trigger": {
+      "type": "noTag"
+    },
+    "action": "gather_data"
+  },  
+
+  {
+    "name": "data:gather:end",
+    "states": ["data:collect"],
+    "trigger": {
+      "type": "contains",
+      "value": "</tr>"
+    },
+    "action": "gather_data_end",
+    "sets": {
+      "state": "collect"
+    }
+  },  
+  {
+    "name": "address:collect:end",
+    "states": ["addresses", "data:collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "</address>"
+    },
+    "action": "gather_data_end",
+    "sets": {
+      "state": "addresses"
+    }
+  },
+  {
+    "name": "address:collect",
+    "states": ["addresses"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<address>"
+    },
+    "sets": {
+      "state": "address:collect"
+    }
+  },
+  {
+    "name": "address:gather",
+    "states": ["address:collect"],
+    "trigger": {
+      "type": "noTag"
+    },
+    "action": "gather_address"
+  },
+  {
+    "name": "addresses",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "Addresses</th>"  
+    },
+    "sets": {
+      "state": "addresses"
+    }
+  },
+  {
+    "name": "historical",
+    "states": ["collect", "addresses"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "Historical Information</th>"  
+    },
+    "sets": {
+      "state": "historical"
+    }
+  }
+]

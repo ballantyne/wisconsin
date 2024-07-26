@@ -1,0 +1,145 @@
+[
+  {
+    "name": "results:start",
+    "states": ["scan"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<table id=\"results\">"
+    },
+    "sets": {
+      "state": "collect"
+    }
+  },
+  {
+    "name": "new",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<tr class="
+    },
+    "action": "new"
+  },
+  {
+    "name": "gather_link",
+    "states": ["name"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<span class=\"name\"><a href=\""
+    },
+    "action": "gather_name_parts"
+  },
+
+  {
+    "name": "gather_name_parts",
+    "states": ["name"],
+    "trigger": {
+      "type": "noTag"
+    },
+    "action": "gather_name_parts"
+  },
+  {
+    "name": "statusDescription",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<span class=\"statusDescription\">"
+    },
+    "sets": {
+      "state": "gather"
+    },
+    "action": "next_key"
+  },
+  {
+    "name": "statusDate",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<span class=\"statusDate\">"
+    },
+    "action": "next_key",
+    "sets": {
+      "state": "gather"
+    }
+  },
+ 
+  {
+    "name": "gather",
+    "states": ["gather"],
+    "trigger": {
+      "type": "noTag"
+    },
+    "action": "gather_value",
+    "sets": {
+      "state": "collect"
+    }
+  },
+
+  {
+    "name": "key:entityID",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<td class=\"entityID\">"
+    },
+    "action": "next_key",
+    "sets": {
+      "state": "gather"
+    }
+  },
+  {
+    "name": "gather_name",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<td class=\"nameAndTypeDescription\">"
+    },
+    "sets": {
+      "state": "name",
+      "fields": ["url", "name", "code", "description"]
+    }
+  },
+
+  {
+    "name": "stop_name_mode",
+    "states": ["name"],
+    "trigger": {
+      "type": "exact",
+      "value": "<td class=\"registeredEffectiveDate\">"
+    },
+    "sets": {
+      "state": "collect"
+    },
+    "action": "next_key"
+  },
+
+  {
+    "name": "key:span:collection",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<span class=\"typeDescription\">"
+    },
+    "action": "next_key"
+  },
+  {
+    "name": "gather:link",
+    "states": ["collect"],
+    "trigger": {
+      "type": "startsWith",
+      "value": "<span class=\"name\"><a href="
+    },
+    "action": "gather_link"
+  },
+  {
+    "name": "results:end",
+    "states": ["collect"],
+    "trigger": {
+      "type": "exact",
+      "value": "</table>"
+    },
+    "sets": {
+      "state": "done"
+    },
+    "action": "new"
+  }
+]

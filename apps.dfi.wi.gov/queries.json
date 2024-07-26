@@ -1,0 +1,31 @@
+{
+  "default": {
+    "type": "Advanced",
+    "nameSet": "Entities",
+    "textSearchType": "ExactPhrase",
+    "incDateStart": "",
+    "incDateEnd": "",
+    "includeActiveOrgs": "Include",
+    "includeOldNames": "Exclude",
+    "orgTypes": ""
+  },
+  "advanced": {
+    "type": "Advanced"
+  },
+  "entities": {
+    "nameSet": "Entities"
+  },
+  "agents": {
+    "nameSet": "RegAgents"
+  },
+  "exactPhrase": {
+    "textSearchType": "ExactPhrasse" 
+  },
+  "includeActive": {
+    "includeActiveOrgs": "Include"
+  },
+  "inExistence": {
+    "includeActiveOrgs": "Only" 
+  }
+
+}
