@@ -36,7 +36,7 @@ describe('Wisconsin', () => {
 	}).catch(console.log);
       });
 
-      xit('find', (done) => {
+      it('find', (done) => {
 	var options = {cache: true, meta: true};
 	dfi.find('E054974', options).then((list) => {
 	  //console.log(list.data);
@@ -46,7 +46,7 @@ describe('Wisconsin', () => {
       });
 
 
-      xit('find', (done) => {
+      it('find', (done) => {
 	var options = {cache: true, meta: true};
 	dfi.find('E039779', options).then((list) => {
 	  //console.log(list.data);
@@ -56,7 +56,7 @@ describe('Wisconsin', () => {
       });
 
 
-      xit('entities', (done) => {
+      it('entities', (done) => {
 	var options = {cache: true, meta: true, ttl: 60000};
 	dfi.entities('cheese', options).then((list) => {
 	  //console.log(list);
@@ -65,7 +65,7 @@ describe('Wisconsin', () => {
 	}).catch(console.log);
       });
 
-      xit('agents', (done) => {
+      it('agents', (done) => {
 	var options = {cache: true, meta: true, ttl: 300000};
 	dfi.agents('cheese', options).then((list) => {
 	  //console.log(list);

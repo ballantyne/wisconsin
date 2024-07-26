@@ -22,7 +22,6 @@
   },
   "homepage": "https://github.com/ballantyne/wisconsin#readme",
   "dependencies": {
-    "cache-rules-everything-around-me": "^1.0.0",
     "carrier-pigeon": "^0.1.11",
     "great-lakes": "^1.0.1"
   },
