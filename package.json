@@ -1,6 +1,6 @@
 {
   "name": "wisconsin",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "npm module to collect various sources of data about wisconsin.  ",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "homepage": "https://github.com/ballantyne/wisconsin#readme",
   "dependencies": {
     "carrier-pigeon": "^0.1.11",
-    "great-lakes": "^1.0.1"
+    "great-lakes": "^1.0.5"
   },
   "devDependencies": {
     "mocha": "^10.7.0"
